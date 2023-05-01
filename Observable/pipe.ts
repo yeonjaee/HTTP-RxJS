@@ -1,3 +1,5 @@
+// 챗gpt한테 코드를 주고 궁금한 점을 물어봄.
+
 async create(data: InputData, file: File, files?: File[], userId?): Promise<ExecutionResult<any>> {
     return this.graphql
       .mutate(
