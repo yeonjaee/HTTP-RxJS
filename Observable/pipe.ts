@@ -5,7 +5,7 @@ async create(data: InputData, file: File, files?: File[], userId?): Promise<Exec
       .mutate(
         gql`
           mutation create($data: InputData!, $file: Upload!, $files: [Upload!], $userId: ID) {
-            createEpisode(data: $data, file: $file, files: $files, userId: $userId) {
+            create(data: $data, file: $file, files: $files, userId: $userId) {
               id
               summary
               order
@@ -49,7 +49,7 @@ async create(data: InputData, file: File, files?: File[], userId?): Promise<Exec
       .mutate(
         gql`
           mutation create($data: InputData!, $file: Upload!, $files: [Upload!], $userId: ID) {
-            createEpisode(data: $data, file: $file, files: $files, userId: $userId) {
+            create(data: $data, file: $file, files: $files, userId: $userId) {
               id
               summary
               order
@@ -65,6 +65,9 @@ async create(data: InputData, file: File, files?: File[], userId?): Promise<Exec
         }
       )
       .toPromise();
+
+  result.data = result.data.create;
+  return result;
   }
 
 // 그러나, pipe()를 사용하면 코드의 확장성과 가독성을 향상시킬 수 있습니다.
